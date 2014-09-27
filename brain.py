@@ -1,6 +1,8 @@
 from urllib2 import urlopen
 from jellyfish import jaro_distance
 import pandas as pd
+import numpy as np
+import jaro
 
 
 def read_single_artwork(id):
@@ -15,11 +17,11 @@ def read_single_artwork(id):
         id)
     conn = urlopen(target_url)
     rsp = eval(conn.read())
-    features = rsp["response"]["docs"][0]
+    features = rsp["response"]["docs"]
     return features
 
 
-def read_one_single_feature(feature, id, lim=64561):
+def read_one_single_feature(feature, id):
     '''
     feature: string i.e "prod_technique"
     lim:  int number of records to parse default all of them
@@ -31,11 +33,6 @@ def read_one_single_feature(feature, id, lim=64561):
     conn = urlopen(target_url)
     rsp = eval(conn.read())
     artworks = rsp["response"]["docs"][0]
-    try:
-        artworks[feature]
-        artworks[feature][0]
-    except:
-        print 'feature not there'
     return artworks[feature][0]
 
 
@@ -44,7 +41,7 @@ def read_all_single_feature(feature, lim=64561):
     feature: string i.e "prod_technique"
     lim:  int number of records to parse default all of them
     ----
-    returns a dictionary containing the fields that describe the artwor
+    returns a dictionary containing the fields that describe the artwork
     '''
     target_url = "http://solr.smk.dk:8080/solr-h4dk/prod_collection/select?q=*%3A*&rows={0}&wt=json".format(
         lim)
@@ -74,27 +71,38 @@ def read_all_set_features(features, lim=64561):
     if type(features) == list:
         data = {}
         target_url = "http://solr.smk.dk:8080/solr-h4dk/prod_collection/select?q=*%3A*&rows={0}&wt=json".format(
-        lim)
+            lim)
         conn = urlopen(target_url)
         rsp = eval(conn.read())
         artworks = rsp["response"]["docs"]
         for feature in features:
-            print feature
             response = []
             for artwork in artworks:
                 try:
                     artwork[feature]
-                    if  type(artwork[feature]) == list:
-                        response.append(artwork[feature][0])
+                    if type(artwork[feature]) == list:
+                        if len(artwork[feature][0]) > 2:
+                            response.append(artwork[feature][0])
+                        else:
+                            response.append(np.nan)
                     else:
-                        response.append(artwork[feature])
+                        if len(artwork[feature]) > 2:
+                            response.append(artwork[feature])
+                        else:
+                            response.append(np.nan)
                 except:
-                    response.append(None)
-            data[str(feature)] =  response
-        return pd.DataFrame.from_dict(data)
+                    response.append(np.nan)
+            data[str(feature)] = response
+        return pd.DataFrame.from_dict(data).dropna()
     else:
-        print "not a list"
+        print("not a list")
+
 
 def d(target, DataFrame, feature):
-    DataFrame['score'] = DataFrame[feature].apply(lambda row: 1 - jaro_distance(target, row))
+    '''
+    returns a score of similarity where 1 is the same and 0 is totaly
+    different
+    '''
+    DataFrame['score-{0}'.format(feature)] = DataFrame[feature].apply(
+        lambda row:  jaro_distance(target, row))
     return DataFrame
