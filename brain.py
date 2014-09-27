@@ -2,7 +2,6 @@ from urllib2 import urlopen
 from jellyfish import jaro_distance
 import pandas as pd
 import numpy as np
-import jaro
 
 
 def read_single_artwork(id):
@@ -33,7 +32,10 @@ def read_one_single_feature(feature, id):
     conn = urlopen(target_url)
     rsp = eval(conn.read())
     artworks = rsp["response"]["docs"][0]
-    return artworks[feature][0]
+    if type(artworks[feature]) == list:
+        return artworks[feature][0]
+    else:
+        return  artworks[feature]
 
 
 def read_all_single_feature(feature, lim=64561):
@@ -41,7 +43,7 @@ def read_all_single_feature(feature, lim=64561):
     feature: string i.e "prod_technique"
     lim:  int number of records to parse default all of them
     ----
-    returns a dictionary containing the fields that describe the artwork
+    returns a dictionary containing the string of the feature of the artwork
     '''
     target_url = "http://solr.smk.dk:8080/solr-h4dk/prod_collection/select?q=*%3A*&rows={0}&wt=json".format(
         lim)
@@ -57,6 +59,11 @@ def read_all_single_feature(feature, lim=64561):
             continue
     return response
 
+def get_related_artworks():
+    """
+    not implemented yet
+    """
+    target_url =   "http://solr.smk.dk:8080/solr-h4dk/prod_search_pict/select?q=q:*KMS3924*&wt=json"
 
 def read_all_set_features(features, lim=64561):
     '''
@@ -106,3 +113,8 @@ def d(target, DataFrame, feature):
     DataFrame['score-{0}'.format(feature)] = DataFrame[feature].apply(
         lambda row:  jaro_distance(target, row))
     return DataFrame
+
+def add_location(target,  DataFrame, feature):
+        feature = artists_natio
+        DataFrame['score-{0}'.format(feature)] = DataFrame[feature].apply(
+        lambda row:  jaro_distance(target, row))
