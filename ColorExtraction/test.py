@@ -6,7 +6,10 @@ from matplotlib.colors import hsv_to_rgb
 import colorsys
 
 
-im = img.Imstat('../imgs/copenhagen-painting.jpg')
+im = img.Imstat('../imgs/copenhagen-painting-thumbnail.jpg')
+
+a = im.get_rgb_stats()
+
 #im = img.Imstat('../imgs/test.jpg')
 
 #im = img.Imstat('../imgs/copenhagen-painting-thumbnail.jpg')
