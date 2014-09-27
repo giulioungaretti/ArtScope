@@ -1,7 +1,9 @@
 from urllib2 import urlopen
 from jellyfish import jaro_distance
+import os
 import pandas as pd
 import numpy as np
+import re
 
 
 def read_single_artwork(id):
@@ -35,7 +37,7 @@ def read_one_single_feature(feature, id):
     if type(artworks[feature]) == list:
         return artworks[feature][0]
     else:
-        return  artworks[feature]
+        return artworks[feature]
 
 
 def read_all_single_feature(feature, lim=64561):
@@ -59,11 +61,13 @@ def read_all_single_feature(feature, lim=64561):
             continue
     return response
 
+
 def get_related_artworks():
     """
     not implemented yet
     """
-    target_url =   "http://solr.smk.dk:8080/solr-h4dk/prod_search_pict/select?q=q:*KMS3924*&wt=json"
+    target_url = "http://solr.smk.dk:8080/solr-h4dk/prod_search_pict/select?q=q:*KMS3924*&wt=json"
+
 
 def read_all_set_features(features, lim=64561):
     '''
@@ -114,7 +118,52 @@ def d(target, DataFrame, feature):
         lambda row:  jaro_distance(target, row))
     return DataFrame
 
-def add_location(target,  DataFrame, feature):
-        feature = artists_natio
-        DataFrame['score-{0}'.format(feature)] = DataFrame[feature].apply(
-        lambda row:  jaro_distance(target, row))
+
+def add_location(target,  DataFrame):
+    feature = u'artists_natio'
+
+    def oneorzero(row):
+        if row == target:
+            return 1
+        else:
+            return 0
+
+    DataFrame[
+        'score-{0}'.format(feature)] = DataFrame[feature].apply(oneorzero)
+
+
+def add_production_date(DataFrame):
+    dates = []
+    for row in DataFrame.object_production_date:
+        try:
+            date = re.findall("\d{4}", row)[0]
+            dates.append(int(date))
+        except Exception as e:
+            dates.append(np.nan)
+    DataFrame["object_production_date"] = dates
+
+
+def string_date(thestring):
+    date = re.findall("\d{4}", thestring)
+    return date
+
+def score_dates(target, DataFrame):
+    feature = u'object_production_date'
+
+    def oneorzero(row):
+        if int(row) == int(target):
+            return 1
+        else:
+            return 0
+
+    DataFrame[
+        'score-{0}'.format(feature)] = DataFrame[feature].apply(oneorzero)
+
+
+
+def downloader(name, path):
+    import urllib2
+    file = urllib2.urlopen(path)
+    output = open(name, 'wb')
+    output.write(file.read())
+    output.close()

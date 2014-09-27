@@ -8,7 +8,7 @@ def load_img(filename,hist=False):
 
 	if hist == False:
 		res1 = pl.extract_colors(filename,hist=hist)
-		
+
 		c,s = get_colors_sizes(res1)
 
 		res = c,s
@@ -81,7 +81,7 @@ x = [1,2,3,1,2,3]
 y = [1,1,1,0,0,0]
 
 def boxpie(W,c,x,y,ax=None):
-    
+
     print len(W)
 
     if not ax:

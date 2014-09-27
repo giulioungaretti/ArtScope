@@ -5,9 +5,11 @@ HACK4DK
 
 1. Compare every field describing the artwork using Levenshtein distance of string with same field for every artwork.
 The distance  gives an measure of the difference of the strings.
+
 The features in use for now are:
     - the kind of art (painting, photo ...)
     - the technique (oil, canvas, wood ...)
+    - wip use the year
 
 
 2. Find the main colors of the artwork
