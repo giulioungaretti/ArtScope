@@ -19,8 +19,8 @@ class Imstat:
 
     def get_rgb_stats(self):
         cnorm = tuple((255.0, 255.0, 255.0))
-        colors = [tuple(map(op.div, i.value, cnorm)) for i in self.get_pallette()]
-        sizes = [i.prominence * 100.0 for i in self.get_pallette()]
+        colors = [tuple(map(op.div, i.value, cnorm)) for i in self.get_pallette().colors]
+        sizes = [i.prominence * 100.0 for i in self.get_pallette().colors]
 
         return colors,sizes
 
@@ -94,11 +94,11 @@ class Imstat:
 
         F2 = fftpack.fftshift(F1)
 
-        FreqCompRows = np.fft.fftfreq(F2.shape[0],d=2)
-        FreqCompCols = np.fft.fftfreq(F2.shape[1],d=2)
+        #FreqCompRows = np.fft.fftfreq(F2.shape[0],d=2)
+        #FreqCompCols = np.fft.fftfreq(F2.shape[1],d=2)
 
-        print FreqCompCols
-        print FreqCompRows
+        #print FreqCompCols
+        #print FreqCompRows
 
         # Calculate a 2D power spectrum
         psd2D = np.abs(F2)**2
@@ -108,15 +108,17 @@ class Imstat:
 
         # Now plot up both
 
-        plt.imshow( np.log10( arr ), cmap=plt.cm.Greys)
-        plt.show()
+        #plt.imshow( np.log10( arr ), cmap=plt.cm.Greys)
+        #plt.show()
 
-        plt.imshow( np.log10( psd2D ))
-        plt.show()
+        #plt.imshow( np.log10( psd2D ))
+        #plt.show()
 
-        plt.semilogy( psd1D )
-        plt.xlabel('Spatial Frequency')
-        plt.ylabel('Power Spectrum')
+        #plt.semilogy( psd1D )
+        #plt.xlabel('Spatial Frequency')
+        #plt.ylabel('Power Spectrum')
+
+        return psd1D
 
     def plot_two2_hist(self):
 
@@ -135,7 +137,8 @@ class Imstat:
 
         plt.imshow(RGB_hsv,extent=[0,1,0,1])
 
-        plt.contourf(hist,levels=[0,1],origin='upper',extent=[0,1,0,1],colors='white',alpha=1.0)
+        #plt.contourf(hist,levels=[0,1],origin='upper',extent=[0,1,0,1],colors='white',alpha=1.0)
+        plt.contourf(hist,levels=[1,1000],origin='upper',extent=[0,1,0,1],colors='white',alpha=0.5)
         plt.show()
 
     def plot_blocks(self):
