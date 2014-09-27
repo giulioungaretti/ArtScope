@@ -207,7 +207,11 @@ def hist(filename_or_img):
     return result
 
 def hist_hsv(filename_or_img):
-    img = scipy.misc.imread(filename_or_img)
+    #img = scipy.misc.imread(filename_or_img)
+    if Image.isImageType(filename_or_img):
+        img = filename_or_img
+    else:
+        img = Image.open(filename_or_img)
     array = np.asarray(img)
     arr = (array.astype(float))/255.0
     img_hsv = colors.rgb_to_hsv(arr[...,:3])
