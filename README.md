@@ -9,7 +9,8 @@ The distance  gives an measure of the difference of the strings.
 The features in use for now are:
     - the kind of art (painting, photo ...)
     - the technique (oil, canvas, wood ...)
-    - wip use the year
+    - year of creation
+    - place of creation
 
 
 2. Find the main colors of the artwork

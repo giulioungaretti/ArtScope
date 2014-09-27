@@ -1,4 +1,5 @@
 from urllib2 import urlopen
+import urllib
 from jellyfish import jaro_distance
 import os
 import pandas as pd
@@ -150,24 +151,13 @@ def string_date(thestring):
 def score_dates(target, DataFrame):
     feature = u'object_production_date'
     score = np.abs(DataFrame[feature]  -target)  # starts at zero goes to min
-    res = []
-    for i in score:
-        try:
-            i = int(i)
-            target = int(target)
-            if int(i) != target:
-                res.append((i - - score.min()) / (score.max() - score.min()))
-            elif int(i) == 1570:
-                print "bitch"
-                res.append(1)
-        except:
-            res.append(np.nan)
-        #normalize
+    #normalize
+    score = (score - score.min()) / (score.max() - score.min())
     DataFrame[
-        'score-{0}'.format(feature)] = res
+        'score-{0}'.format(feature)] = score
 
 
-import urllib
+
 
 
 def downloader(name, path):

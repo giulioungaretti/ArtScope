@@ -56,6 +56,7 @@ for i in df.group.unique():
     print>> f1, string + '\n'
 f1.close()
 
+f1 = open('./res.csv', 'a')
 for i in df.group.unique():
     temp = df[df.group == i]
     name = temp[:1].objectnumber.values
@@ -66,6 +67,8 @@ for i in df.group.unique():
     downloader(name[0].split('/')[0], str(url[0]))
     string = name[0].split('/')[0] + '.jpg' + ',' + title
     print>> f1, string + '\n'
+
+f1.close()
 
 
 # best match
