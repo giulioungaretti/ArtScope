@@ -149,21 +149,30 @@ def string_date(thestring):
 
 def score_dates(target, DataFrame):
     feature = u'object_production_date'
-
-    def oneorzero(row):
-        if int(row) == int(target):
-            return 1
-        else:
-            return 0
-
+    score = np.abs(DataFrame[feature]  -target)  # starts at zero goes to min
+    res = []
+    for i in score:
+        try:
+            i = int(i)
+            target = int(target)
+            if int(i) != target:
+                res.append((i - - score.min()) / (score.max() - score.min()))
+            elif int(i) == 1570:
+                print "bitch"
+                res.append(1)
+        except:
+            res.append(np.nan)
+        #normalize
     DataFrame[
-        'score-{0}'.format(feature)] = DataFrame[feature].apply(oneorzero)
+        'score-{0}'.format(feature)] = res
 
+
+import urllib
 
 
 def downloader(name, path):
     import urllib2
     file = urllib2.urlopen(path)
-    output = open(name, 'wb')
+    output = open(name+'.jpg', 'wb')
     output.write(file.read())
     output.close()
