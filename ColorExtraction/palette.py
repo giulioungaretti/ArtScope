@@ -9,6 +9,7 @@
 Detect the main colors used in an image.
 """
 import colorsys
+import matplotlib.colors as colors
 import multiprocessing
 import sys
 from PIL import Image, ImageChops, ImageDraw
@@ -16,6 +17,9 @@ from collections import Counter, namedtuple
 from colormath.color_objects import RGBColor
 from operator import itemgetter, mul, attrgetter
 import numpy as np
+import scipy
+
+from scipy.misc import imread
 
 import config
 
@@ -193,7 +197,6 @@ def hist(filename_or_img):
 
     hist = np.array(im.histogram())
 
-    print hist.shape
 
     if hist.shape[0] > 257:
         R,G,B = np.split(hist,3)
@@ -203,6 +206,25 @@ def hist(filename_or_img):
         result = hist
 
     return result
+
+def hist_hsv(filename_or_img):
+    img = scipy.misc.imread(filename_or_img)
+    array = np.asarray(img)
+    arr = (array.astype(float))/255.0
+    img_hsv = colors.rgb_to_hsv(arr[...,:3])
+
+    return img_hsv
+
+def hist_2d():
+    #see http://opencvpython.blogspot.dk/2013/03/histograms-3-2d-histograms.html
+    import cv2
+     
+    img = cv2.imread('home.jpg')
+    hsv = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
+    hist = cv2.calcHist( [hsv], [0, 1], None, [180, 256], [0, 180, 0, 256] )
+     
+    plt.imshow(hist,interpolation = 'nearest')
+    plt.show()
 
 def norm_color(c):
     r, g, b = c
