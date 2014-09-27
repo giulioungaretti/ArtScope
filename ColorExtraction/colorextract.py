@@ -6,82 +6,76 @@ import colorsys
 
 def load_img(filename,hist=False):
 
-	cnorm = tuple((255.0,255.0,255.0))
-	
-
 	if hist == False:
 		res1 = pl.extract_colors(filename,hist=hist)
 		
+		c,s = get_colors_sizes(res1)
+
+		res = c,s
+
 	elif hist == True:
 		res1,res2 = pl.extract_colors(filename,hist=hist)
-		print "true"
 
-		res = res1,res2
+		c,s = get_colors_sizes(res1)
+		hc,hs = get_colors_sizes(res2)
+
+		res = c,s,hc,hs
 
 	return res
 
-palt,full_palt = load_img('../imgs/copenhagen-painting-thumbnail.jpg',hist=True)
+def get_colors_sizes(Pallette):
 
-pl.save_size_palette_as_image("pallette.png",palt)
+	cnorm = tuple((255.0,255.0,255.0))
 
-for c in palt.colors:
-	print c
-	print c.value
+	#Normalization for matplotlib convention (RGB scaled between 0-1)
+	colors = [tuple(map(op.div,i.value,cnorm)) for i in Pallette.colors]
 
-#Normalization for matplotlib convention (RGB scaled between 0-1)
+	#Normalization for matplotlib convention (Scaled between 0-100)
+	sizes = [i.prominence*100.0 for i in Pallette.colors]
 
-cnorm = tuple((255.0,255.0,255.0))
-colors = [tuple(map(op.div,i.value,cnorm)) for i in palt.colors]
+	return colors,sizes
 
-#Normalization for matplotlib convention (Scaled between 0-100)
-sizes = [i.prominence*100 for i in palt.colors]
+colors,sizes,hist_colors,hist_size = load_img('../imgs/copenhagen-painting-thumbnail.jpg',hist=True)
 
+#pl.save_size_palette_as_image("pallette.png",palt)
 
-print colors
-print sizes
 plt.pie(sizes, colors=colors,autopct='%1.1f%%', startangle=90)
 # Set aspect ratio to be equal so that pie is drawn as a circle.
 plt.axis('equal')
-
 plt.show()
-
-hist_colors = [i.value for i in full_palt.colors]
-hist_size = [i.prominence*100 for i in full_palt.colors]
 
 def get_hsv_h(fulldat):
     rgb = fulldat[0]
     #Enusure that RGB tuple is a float (required for conversion)
-    return colorsys.rgb_to_hsv(rgb[0]*1.0,rgb[1]*1.0,rgb[2]*1.0)[0]
+    return colorsys.rgb_to_hsv(rgb[0]*255.0,rgb[1]*255.0,rgb[2]*255.0)[0]
 
 def get_hsv_v(fulldat):
     rgb = fulldat[0]
     #Enusure that RGB tuple is a float (required for conversion)
-    return colorsys.rgb_to_hsv(rgb[0]*1.0,rgb[1]*1.0,rgb[2]*1.0)[2]
+    return colorsys.rgb_to_hsv(rgb[0]*255.0,rgb[1]*255.0,rgb[2]*255.0)[2]
 
-#hist_colors.sort(key=get_hsv)
-
+#sort colors and sizes together
 hist_colorss, hist_sizes = zip(*sorted(zip(hist_colors, hist_size),
   key=get_hsv_v, reverse=True))
 
 def hexencode(rgb):
     print rgb
-    r=rgb[0]
-    g=rgb[1]
-    b=rgb[2]
+    r=rgb[0]*255.0
+    g=rgb[1]*255.0
+    b=rgb[2]*255.0
     return '#%02x%02x%02x' % (r,g,b)
 
 for idx, c in enumerate(hist_colorss):
+    print 'hi'
+    print c
     plt.bar(idx, hist_sizes[idx], color=hexencode(c),edgecolor=hexencode(c))
 
 plt.show()
 
-#Initial idea from David Warde-Farley on the SciPy Cookbook
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 from matplotlib.ticker import NullLocator
-#from matplotlib.collections import RegularPolyCollection
-#from matplotlib.colors import BoundaryNorm, ListedColormap
 
 x = [1,2,3,1,2,3]
 y = [1,1,1,0,0,0]
@@ -113,7 +107,6 @@ def boxpie(W,c,x,y,ax=None):
 boxpie(sizes,colors,x,y)
 
 plt.show()
-
 
 [re,gr,bl] = pl.hist('../imgs/copenhagen-painting-thumbnail.jpg')
 ir = pl.hist('../imgs/copenhagen-infrared-thumbnail.jpg')
