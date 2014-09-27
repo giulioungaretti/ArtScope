@@ -3,7 +3,20 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import hsv_to_rgb
 
-im = img.Imstat('../imgs/copenhagen-painting-thumbnail.jpg')
+import colorsys
+
+
+im = img.Imstat('../imgs/copenhagen-painting.jpg')
+#im = img.Imstat('../imgs/test.jpg')
+
+#im = img.Imstat('../imgs/copenhagen-painting-thumbnail.jpg')
+#im2 = img.Imstat('../imgs/copenhagen-infrared.jpg')
+#im3 = img.Imstat('../imgs/copenhagen-xray.jpg')
+
+im.plot_power_spectrum()
+#im2.plot_power_spectrum()
+#im3.plot_power_spectrum()
+plt.show()
 
 im.plot_hsv()
 plt.show()
@@ -11,7 +24,40 @@ plt.show()
 im.plot_rgb()
 plt.show()
 
+im.plot_blocks()
 
+im.get_hsv_values()
+im.plot_two2_hist()
+
+H, V = np.mgrid[0:1:300j, 0:1:300j]
+S = np.ones_like(V)
+HSV = np.dstack((H, S, V))
+RGB_hsv = hsv_to_rgb(HSV)
+
+plt.imshow(RGB_hsv)
+plt.show()
+
+def get_hls(dat):
+    hls_to_rgb = np.vectorize(colorsys.hls_to_rgb)
+
+    h, l, s = np.rollaxis(dat, axis=-1)
+    r, g, b = hls_to_rgb(h, l, s)
+    arr = np.dstack((r, g, b))
+
+    #c = colorsys.hls_to_rgb(dat)
+    #c = np.array(c)
+    #c = c.swapaxes(0,2)
+    return arr
+
+
+HSV_l = np.dstack((H, V, S))
+print HSV_l.shape
+RGB_hls = get_hls(HSV_l)
+
+print RGB_hls.shape
+
+plt.imshow(RGB_hls)
+plt.show()
 #Pretty plotting
 # ----------------------------------------------------
 
@@ -43,7 +89,6 @@ def define_aspect(extent,target_aspect):
         
 # ----------------------------------------------------
 
-
 vis = img.Imstat('../imgs/copenhagen-painting-thumbnail.jpg')
 uv = img.Imstat('../imgs/copenhagen-uv-thumbnail.jpg')
 ir = img.Imstat('../imgs/copenhagen-infrared-thumbnail.jpg')
@@ -60,7 +105,7 @@ ir_range = np.linspace(750.0, 1000.0, 256)[::-1]
 uv_range = np.linspace(300.0, 390.0, 256)[::-1]
 
 
-V, H = np.mgrid[0.45:0.55:10j, 0:1:300j]
+V, H = np.mgrid[0.75:0.55:10j, 0:1:300j]
 S = np.ones_like(V)
 HSV = np.dstack((H, S, V))
 RGB = hsv_to_rgb(HSV)
@@ -81,9 +126,9 @@ ax[1].imshow(np.fliplr(RGB), origin="lower", extent=[390, 750, 0, 1], aspect=10,
 ax[1].set_ylim(0,1)
 ax[1].set_axis_off()
 
-ax[2].fill_between(vis_range, 0, vis_hsv[0,:],lw=0)
-ax[2].fill_between(ir_range, 0, ir_gs,lw=0)
-ax[2].fill_between(uv_range, 0, uv_hsv[0,:],lw=0)
+ax[2].fill_between(vis_range, 0, vis_hsv[0,:],lw=0,color='white',edgecolor='white',alpha=0.8)
+ax[2].fill_between(ir_range, 0, ir_gs,lw=0,color='white',edgecolor='white',alpha=0.8)
+ax[2].fill_between(uv_range, 0, uv_hsv[0,:],lw=0,color='white',edgecolor='white',alpha=0.8)
 
 # ax[2].fill_between(vis_range, 0, vis_hsv[2,:],lw=0.0,color='gray',alpha=0.5)
 # ax[2].fill_between(ir_range, 0, ir_gs,lw=0,color='gray')
