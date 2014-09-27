@@ -197,12 +197,11 @@ def hist(filename_or_img):
 
     hist = np.array(im.histogram())
 
-
+    print hist.shape
     if hist.shape[0] > 257:
         R,G,B = np.split(hist,3)
         result = [R,G,B]
     else:
-        print hist.shape
         result = hist
 
     return result
@@ -213,7 +212,20 @@ def hist_hsv(filename_or_img):
     arr = (array.astype(float))/255.0
     img_hsv = colors.rgb_to_hsv(arr[...,:3])
 
-    return img_hsv
+    h = np.histogram(img_hsv[..., 0].flatten() * 255, bins=256, range=(0.0, 255.0))[0]
+    s = np.histogram(img_hsv[..., 1].flatten() * 255, bins=256, range=(0.0, 255.0))[0]
+    v = np.histogram(img_hsv[..., 2].flatten() * 255, bins=256, range=(0.0, 255.0))[0]
+
+    print 'H'
+    print h.shape
+
+
+    hsv = np.array((h,s,v))
+
+    print 'hsv'
+    print hsv.shape
+
+    return hsv
 
 def hist_2d():
     #see http://opencvpython.blogspot.dk/2013/03/histograms-3-2d-histograms.html
