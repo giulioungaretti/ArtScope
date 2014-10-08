@@ -1,0 +1,4 @@
+#A2E17A medium
+#4DE1C4 tech
+#7CD1F7 nat
+#E2B1EB time
