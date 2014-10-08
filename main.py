@@ -43,33 +43,37 @@ df['sort_axis'] = crit
 df = df.set_index(df.sort_axis)
 df = df.sort()
 
-f1 = open('./res.csv', 'w+')
-for i in df.group.unique():
-    temp = df[df.group == i]
-    name = temp[-1:].objectnumber.values
-    title = temp[-1:].title_dk.values
-    url = temp[-1:].externalurl.values
-    score = temp[-1:].sort_axis.values
-    # print score
-    downloader(name[0].split('/')[0], str(url[0]))
-    string = name[0].split('/')[0] + '.jpg' + ',' + title
-    print>> f1, string + '\n'
+
+# f1 = open('./res.csv', 'w+')
+# for i in df.group.unique():
+#     temp = df[df.group == i]
+#     name = temp[-1:].objectnumber.values
+#     title = temp[-1:].title_dk.values
+#     url = temp[-1:].externalurl.values
+#     score = temp[-1:].sort_axis.values
+#     # print score
+#     downloader(name[0].split('/')[0], str(url[0]))
+#     string = name[0].split('/')[0] + '.jpg' + ',' + title
+#     print>> f1, string + '\n'
+# f1.close()
+
+
+f1 = open('./res2.csv', 'a')
+for i in df[df.group ==4].index[-10:]:
+    name = df.ix[i].objectnumber
+    title = df.ix[i].title_dk
+    url = df.ix[i].externalurl
+    score = df.ix[i].sort_axis
+    print df.ix[i]['score-prod_technique']
+    if type(url) != str:
+        for ur in url:
+            downloader(n,  str(ur))
+            string = n + '.jpg' + ',' + title
+            print>> f1, string + '\n'
+    if type(url) == str:
+        downloader(name,  str(url))
+        string = name + '.jpg' + ',' + title
+        print>> f1, string + '\n'
+
 f1.close()
 
-f1 = open('./res.csv', 'a')
-for i in df.group.unique():
-    temp = df[df.group == i]
-    name = temp[:1].objectnumber.values
-    title = temp[:1].title_dk.values
-    url = temp[:1].externalurl.values
-    score = temp[:1].sort_axis.values
-    # print score
-    downloader(name[0].split('/')[0], str(url[0]))
-    string = name[0].split('/')[0] + '.jpg' + ',' + title
-    print>> f1, string + '\n'
-
-f1.close()
-
-
-# best match
-df[df.group = 4]
