@@ -16,9 +16,10 @@ html {
         font-size: 76%;
 }
 body {
-        background-color: #fff;
+        background-color: #f5f5f5;
         color: #333;
         font-size: 1em;
+        font-weight:200;
         font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
 }
@@ -114,12 +115,22 @@ a {
         height: 80vh;
 }
 #intro-start {
-        background: url('../img/3.jpg') no-repeat center top;
+        background: url('../img/cover.jpg') no-repeat center top;
         background-size: cover;
 }
-#hero-overview {
-        min-height: 500px;
-        background: url('../img/2.png') no-repeat center top;
+#hero-layers {
+        min-height: 200px;
+        background: url('../img/layers.png') no-repeat center top;
+        background-size: contain;
+}
+#hero-layers {
+        min-height: 350px;
+        background: url('../img/layers.png') no-repeat center top;
+        background-size: contain;
+}
+#hero-data {
+        min-height: 350px;
+        background: url('../img/data.png') no-repeat center top;
         background-size: contain;
 }
 #intro h1 {
@@ -134,7 +145,7 @@ a {
 .member-name {
         width: 100%;
         height: 30%;
-        font-weight:400;
+        font-weight: 400;
 }
 .member-text {
         width: 100%;
@@ -179,7 +190,7 @@ a {
 .member-name[data-member='HS'] {
         color: #e1a3ee;
 }
-/*team*/
+/*introduction*/
 
 #introduction {
         color: #fff;
@@ -196,10 +207,19 @@ a {
         color: #333;
         background-color: #fd971f;
 }
-#layers .grid .col-3-12 {
+#invisiblelayers {
+        color: #E27C03;
+}
+/*data*/
+
+#data {
+        color: #333;
+        background-color: #A1b56c;
+}
+#layers .grid .col-4-12 {
         padding-left: 50px;
 }
-#layers .col-9-12 {
+#layers .col-8-12 {
         padding-right: 0px;
 }
 /* Contact */
@@ -251,6 +271,38 @@ a {
 #intro-start {
         padding-top: 126px;
 }
+/*footer*/
+.footer {
+background-color: #FFFFFF;
+        color: #333;
+        text-align: center;
+        height:100%;
+        padding:20px;
+}
+
+#hack4k {
+        height: 150px;
+        background: url('../img/hack4klogo.png') no-repeat center top;
+        background-size: contain;
+}
+#smk {
+        height: 150px;
+        background: url('../img/smk_logo.png') no-repeat center top;
+        background-size: contain;
+}
+#hero-layers {
+        height: 150px;
+        background: url('../img/layers.png') no-repeat center top;
+        background-size: contain;
+}
+#mega {
+        height: 150px;
+        line-height: 150px;
+        font-family:'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: #333;
+        font-weight: 100;
+        font-size: 5em;
+}
 /* Media Queries */
 
 @media all and (min-width: 767px) {
@@ -272,5 +324,13 @@ a {
                 height: 240px;
                 line-height: 80px;
                 font-size: 1.85em;
+        }
+        /*hero */
+        
+        #hero-data {
+                min-height: 500px;
+        }
+        #hero-layers {
+                min-height: 500px;
         }
 }
