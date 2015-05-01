@@ -24,7 +24,8 @@ body {
 }
 section {
         overflow: hidden;
-        padding-bottom: 125px;
+        padding: 20px;
+        padding-top: 125px;
 }
 h1,
 h2,
@@ -116,6 +117,11 @@ a {
         background: url('../img/3.jpg') no-repeat center top;
         background-size: cover;
 }
+#hero-overview {
+        min-height: 500px;
+        background: url('../img/2.png') no-repeat center top;
+        background-size: contain;
+}
 #intro h1 {
         margin-top: 0;
         text-align: center;
@@ -125,23 +131,29 @@ a {
 #team-members {
         padding-top: 25px;
 }
-.pic {
+.member-name {
         width: 100%;
-        height: 50%;
-}
-.pic img {
-        flex-shrink: 0;
-        min-width: 100%;
-        min-height: 100%;
-        float: right;
-        width: 110px;
-        margin-bottom: 15px;
+        height: 30%;
+        font-weight:400;
 }
 .member-text {
-        padding-top: 1px;
         width: 100%;
-        height: 50%;
-        line-height: 0px;
+        height: 70%;
+        line-height: 1;
+}
+.member-text h1 {
+        font-weight: 300;
+        line-height: 1.1;
+        font-size: 1em;
+        margin: 0;
+        word-wrap: break-word;
+}
+.member-text h2 {
+        font-weight: 300;
+        line-height: 1;
+        font-size: 1em;
+        margin: 0;
+        word-wrap: break-word;
 }
 .team-member {
         background-color: #303030;
@@ -149,7 +161,7 @@ a {
         margin: 0 auto 25px;
         width: 150px;
         height: 150px;
-        line-height: 150px;
+        line-height: 50px;
         color: #fff;
         font-size: 1.7em;
         text-align: center;
@@ -159,25 +171,36 @@ a {
         color: #e1a3ee;
 }
 .member-name[data-member='CEC'] {
-        background-color: #303030;
+        color: #e1a3ee;
 }
 .member-name[data-member='SV'] {
-        background-color: #303030;
+        color: #e1a3ee;
 }
 .member-name[data-member='HS'] {
-        background-color: #303030;
+        color: #e1a3ee;
+}
+/*team*/
+
+#introduction {
+        color: #fff;
+        background-color: #000000;
 }
 /*team*/
 
 #team {
-        background: #f5f5f5;
-        color: #000000;
+        color: #333;
 }
-/* team */
+/*layers*/
 
-#team {
-        background: #fb9fb1;
-        color: #fff;
+#layers {
+        color: #333;
+        background-color: #fd971f;
+}
+#layers .grid .col-3-12 {
+        padding-left: 50px;
+}
+#layers .col-9-12 {
+        padding-right: 0px;
 }
 /* Contact */
 
@@ -208,7 +231,7 @@ a {
         position: relative;
         padding-bottom: 56.25%;
         /* 16:9 */
-
+        
         padding-top: 25px;
         height: 0px;
 }
@@ -232,7 +255,7 @@ a {
 
 @media all and (min-width: 767px) {
         /* Common */
-
+        
         html {
                 font-size: 100%;
         }
@@ -240,14 +263,14 @@ a {
                 padding-top: 70px;
         }
         /* Intro */
-
+        
         #intro-start {
                 padding: 70px;
         }
         .team-member {
                 width: 240px;
                 height: 240px;
-                line-height: 240px;
+                line-height: 80px;
                 font-size: 1.85em;
         }
 }
