@@ -24,7 +24,7 @@ body {
 }
 section {
         overflow: hidden;
-        padding: 20px;
+        padding-bottom: 125px;
 }
 h1,
 h2,
@@ -52,7 +52,7 @@ h3 {
 }
 a {
         color: inherit;
-        text-decoration: underline;
+        text-decoration: none;
 }
 .larger-container {
         max-width: 760px;
@@ -125,7 +125,26 @@ a {
 #team-members {
         padding-top: 25px;
 }
+.pic {
+        width: 100%;
+        height: 50%;
+}
+.pic img {
+        flex-shrink: 0;
+        min-width: 100%;
+        min-height: 100%;
+        float: right;
+        width: 110px;
+        margin-bottom: 15px;
+}
+.member-text {
+        padding-top: 1px;
+        width: 100%;
+        height: 50%;
+        line-height: 0px;
+}
 .team-member {
+        background-color: #303030;
         display: block;
         margin: 0 auto 25px;
         width: 150px;
@@ -136,38 +155,29 @@ a {
         text-align: center;
         text-decoration: none;
 }
-.team-member[data-member='GU'] {
-        background-color: #303030;
-        color:#e1a3ee;
+.member-name[data-member='GU'] {
+        color: #e1a3ee;
 }
-.team-member[data-member='CEC'] {
-        background-color: #303030;
-}
-.team-member[data-member='SV'] {
+.member-name[data-member='CEC'] {
         background-color: #303030;
 }
-.team-member[data-member='HS'] {
+.member-name[data-member='SV'] {
         background-color: #303030;
 }
-
+.member-name[data-member='HS'] {
+        background-color: #303030;
+}
 /*team*/
 
 #team {
         background: #f5f5f5;
         color: #000000;
 }
+/* team */
 
-/* Time */
-
-#time {
+#team {
         background: #fb9fb1;
         color: #fff;
-}
-#time img {
-        float: right;
-        width: 110px;
-        margin-left: 10px;
-        margin-bottom: 10px;
 }
 /* Contact */
 
@@ -184,6 +194,9 @@ a {
 #nav .grid {
         padding-left: 0;
         padding-right: 0;
+}
+#nav .text {
+        text-align: center;
 }
 /*video  */
 
@@ -223,9 +236,9 @@ a {
         html {
                 font-size: 100%;
         }
-        /*section {*/
-        /*padding: 50px;*/
-        /*}*/
+        section {
+                padding-top: 70px;
+        }
         /* Intro */
 
         #intro-start {
