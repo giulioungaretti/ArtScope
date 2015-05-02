@@ -1,5 +1,6 @@
 $(document).ready(function() {
-        //$('#tabs .tab-link').css('cursor','pointer');
+        // maybe ios fix!
+        $('#tabs .tab-link').css('cursor','pointer');
         $('#tabs .tab-link').click(function() {
                 console.log(this);
                 var tab_id = $(this).attr('data-tab');
