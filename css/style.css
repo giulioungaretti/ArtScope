@@ -204,31 +204,38 @@ a {
 /*layers*/
 
 #layers {
-        color: #333;
-        background-color: #A1b56c;
-        padding: 0;
-}
-#layers .tab-content.grid {
-        padding-top: 125px;
-}
-#layers #tab-1 {
-        background-color: #fd971f;
-        color: #f5f5f5;
-}
-#layers #tab-2 {
         background-color: #333;
+        background: -webkit-linear-gradient(#383838, #000);
+        /* For Safari 5.1 to 6.0 */
+
+        background: -o-linear-gradient(#383838, #000);
+        /* For Opera 11.1 to 12.0 */
+
+        background: -moz-linear-gradient(#383838, #000);
+        /* For Firefox 3.6 to 15 */
+
+        background: linear-gradient(#383838, #000);
+        /* Standard syntax */
+        color: #f5f5f5;
+        /*color: #;*/
+}
+
+#invisiblelayers {
+        color: #E27C03;
+        color: #000;
+}
+
+#UV {
+        background-color: #f99157;
         color: #f5f5f5;
 }
-#layers #tab-3 {
+#xray {
         background-color: #6fc2ef;
         color: #f5f5f5;
 }
-#layers #tab-4 {
-        background-color: #deaf8f;
+#IR {
+        background-color: #ffcc66;
         color: #f5f5f5;
-}
-#invisiblelayers {
-        color: #E27C03;
 }
 /*data*/
 

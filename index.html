@@ -12,7 +12,6 @@
   <link rel="stylesheet" type="text/css" href="./css/simplegrid.css">
   <link rel="stylesheet" type="text/css" href="./css/style.css">
   <link rel="stylesheet" type="text/css" href="./css/arrow.css">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <title>ArtScope | Experience the invisible </title>
 </head>
 
@@ -62,7 +61,7 @@
   <section id="video">
     <div class="container">
       <p class="lead no-top-margin">
-        It all started with the concept of blending the <em><strong>visible</strong></em>, artworks with the <em><strong>invisible</strong></em>, the connections of the piece with other artworks and the piece viewd under different analytical tools.
+        It all started with the concept of blending the <em><strong>visible</strong></em>, artworks, with the <em><strong>invisible</strong></em>, the connections of the piece under the ArtScope with other artworks and the piece viewd under different analytical tools.
       </p>
     </div>
     <div class="videocontainer">
@@ -81,7 +80,6 @@
     </div>
   </section>
   <section id="layers">
-    <div id="tab-1" class="tab-content current">
       <div class="grid">
         <div class="col-4-12">
           <h2 class="no-top-margin" id="invisiblelayers">Invisible layers</h2>
@@ -93,12 +91,11 @@
           <div id="hero-layers">
           </div>
         </div>
-      </div>
     </div>
-    <div id="tab-2" class="tab-content">
+    <section id="xray">
       <div class="grid">
         <div class="col-4-12">
-          <h2 class="no-top-margin" >Invisible layers</h2>
+          <h2 class="no-top-margin" >Xray</h2>
           <p class="lead no-top-margin">
             Invisible layers reveal nothing new about the artwork. All the informations are already there, but are <strong>invisible</strong> to our eye. Analytical tools such as <strong>Xray</strong>, <strong>IR </strong> and <strong>UV</strong> reveal the history of the piece. Image analysis, on the other hand, reveal more about colors, their distribution and dominance.
           </p>
@@ -109,7 +106,8 @@
         </div>
       </div>
     </div>
-    <div id="tab-3" class="tab-content">
+    </section >
+    <section id="UV">
       <div class="grid">
         <div class="col-4-12">
           <h2 class="no-top-margin" >Invisible layers</h2>
@@ -123,7 +121,8 @@
         </div>
       </div>
     </div>
-    <div id="tab-4" class="tab-content">
+    </section>
+    <section id="IR">
       <div class="grid">
         <div class="col-4-12">
           <h2 class="no-top-margin" id="IR">Infrared Light</h2>
@@ -137,32 +136,6 @@
         </div>
       </div>
     </div>
-    <div id="tabs">
-      <div class="grid">
-        <div class="col-1-4">
-          <div class="tab-link current" data-tab="tab-1">
-            Overview
-          </div>
-        </div>
-        <div class="col-1-4">
-          <div class="tab-link" data-tab="tab-2">
-            XRay
-          </div>
-        </div>
-        <div class="col-1-4">
-          <div class="tab-link" data-tab="tab-3">
-            UV
-          </div>
-        </div>
-        <div class="col-1-4">
-          <div class="tab-link" data-tab="tab-4">
-            IR
-          </div>
-        </div>
-      </div>
-    </div>
-    <script src="./js/main.js">
-    </script>
   </section>
   <section id="data">
     <div class="grid">
@@ -176,6 +149,7 @@
         </p>
       </div>
     </div>
+  </section>
   </section>
   <section id="team">
     <div class="container">
@@ -254,7 +228,13 @@
   </section>
   <section id="notes">
     <div class="container">
-      As much as we would love to say: go and get it on the app store, we can't. Artscope is strictly a prototype. The code base is full of hacks, and it works just for one artworks and with the API that was set-up ad-hoc by SMK during the hackaton.
+      <p>As much as we would love to say: go and get it on the app store, we can't. Artscope is strictly a prototype. The code base is full of hacks, and it works just for one artworks and with the API that was set-up ad-hoc by SMK during the hackaton. </p>
+      <p>
+      ArtScope was an expoloration of what's possible in hacking our cultural heritage in a week end.
+      </p>
+      Since you made it so far, you deserve more details. The application for iOs is made with Unity, whereas all the data processing and image analysis is done in python. The data analysis is done beforehand and the results are hardcoded into the unity app. It's not unreasonable to scale this set-up using a client-server approach.
+      Artwork recognition and tracking is set-up just for one artwork. To scale up it is smarter to explore beacon technology instead of straight image recognition because it's faster and more reliable.
+
     </div>
   </section>
   <div class="footer" role="contentinfo">
