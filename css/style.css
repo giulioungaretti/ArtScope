@@ -205,14 +205,26 @@ a {
 
 #layers {
         color: #333;
-        background-color: #fd971f;
+        background-color: #A1b56c;
         padding: 0;
 }
 #layers .tab-content.grid {
         padding-top: 125px;
 }
+#layers #tab-1 {
+        background-color: #fd971f;
+        color: #f5f5f5;
+}
 #layers #tab-2 {
         background-color: #333;
+        color: #f5f5f5;
+}
+#layers #tab-3 {
+        background-color: #6fc2ef;
+        color: #f5f5f5;
+}
+#layers #tab-4 {
+        background-color: #deaf8f;
         color: #f5f5f5;
 }
 #invisiblelayers {
@@ -253,13 +265,13 @@ a {
 
 #video {
         background: #000000;
-        color: #fff;
+       color: #f5f5f5;
 }
 .videoWrapper {
         position: relative;
         padding-bottom: 56.25%;
         /* 16:9 */
-        
+
         padding-top: 25px;
         height: 0px;
 }
@@ -281,9 +293,25 @@ a {
 }
 /*info*/
 
-.info {
-        background-color: #000;
+#info {
+        background: -webkit-linear-gradient(#000, #383838);
+        /* For Safari 5.1 to 6.0 */
+
+        background: -o-linear-gradient(#000, #383838);
+        /* For Opera 11.1 to 12.0 */
+
+        background: -moz-linear-gradient(#000, #383838);
+        /* For Firefox 3.6 to 15 */
+
+        background: linear-gradient(#000, #383838);
+        /* Standard syntax */
+
         color: #f5f5f5;
+}
+/*notes*/
+#notes{
+    background-color:#AB4642;
+    color:#f8f8f8;
 }
 /*footer*/
 
@@ -315,7 +343,7 @@ a {
         font-family: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         color: #333;
         font-weight: 100;
-        font-size: 5em;
+        font-size: 8em;
 }
 /*tabs */
 
@@ -331,9 +359,27 @@ a {
 }
 #tabs .col-1-4 {
         padding-right: 0;
+        margin-bottom: 0;
+        margin-top: 0;
 }
 #tabs .tab-link.current {
         background: #ededed;
+        color: #222;
+}
+#tabs .tab-link.current[data-tab='tab-1'] {
+        background-color: #fd971f;
+        color: #222;
+}
+#tabs .tab-link.current[data-tab='tab-2'] {
+        background: #333;
+        color: #f5f5f5;
+}
+#tabs .tab-link.current[data-tab='tab-3'] {
+        background-color: #6fc2ef;
+        color: #222;
+}
+#tabs .tab-link.current[data-tab='tab-4'] {
+        background-color: #deaf8f;
         color: #222;
 }
 .tab-content {
@@ -348,7 +394,7 @@ a {
 
 @media all and (min-width: 767px) {
         /* Common */
-        
+
         html {
                 font-size: 100%;
         }
@@ -369,7 +415,7 @@ a {
                 padding-top: 70px;
         }
         /*hero */
-        
+
         #hero-data {
                 min-height: 500px;
         }
