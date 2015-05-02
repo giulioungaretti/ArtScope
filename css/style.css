@@ -19,7 +19,7 @@ body {
         background-color: #f5f5f5;
         color: #333;
         font-size: 1em;
-        font-weight:200;
+        font-weight: 200;
         font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
 }
@@ -206,6 +206,14 @@ a {
 #layers {
         color: #333;
         background-color: #fd971f;
+        padding: 0;
+}
+#layers .tab-content.grid {
+        padding-top: 125px;
+}
+#layers #tab-2 {
+        background-color: #333;
+        color: #f5f5f5;
 }
 #invisiblelayers {
         color: #E27C03;
@@ -242,6 +250,7 @@ a {
         text-align: center;
 }
 /*video  */
+
 #video {
         background: #000000;
         color: #fff;
@@ -250,7 +259,7 @@ a {
         position: relative;
         padding-bottom: 56.25%;
         /* 16:9 */
-
+        
         padding-top: 25px;
         height: 0px;
 }
@@ -271,20 +280,20 @@ a {
         padding-top: 126px;
 }
 /*info*/
-.info{
-        background-color:#000;
-        color:#f5f5f5;
 
+.info {
+        background-color: #000;
+        color: #f5f5f5;
 }
 /*footer*/
+
 .footer {
-background-color: #FFFFFF;
+        background-color: #FFFFFF;
         color: #333;
         text-align: center;
-        height:100%;
-        padding:20px;
+        height: 100%;
+        padding: 20px;
 }
-
 #hack4k {
         height: 150px;
         background: url('../img/hack4klogo.png') no-repeat center top;
@@ -303,24 +312,50 @@ background-color: #FFFFFF;
 #mega {
         height: 150px;
         line-height: 150px;
-        font-family:'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-family: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         color: #333;
         font-weight: 100;
         font-size: 5em;
+}
+/*tabs */
+
+#tabs .tab-link {
+        background: none;
+        color: #222;
+        text-align: center;
+        padding: 10px 15px;
+        cursor: pointer;
+}
+#tabs .grid {
+        max-width: 2140px;
+}
+#tabs .col-1-4 {
+        padding-right: 0;
+}
+#tabs .tab-link.current {
+        background: #ededed;
+        color: #222;
+}
+.tab-content {
+        display: none;
+        padding: 20px;
+        padding-top: 125px;
+}
+.tab-content.current {
+        display: inherit;
 }
 /* Media Queries */
 
 @media all and (min-width: 767px) {
         /* Common */
-
+        
         html {
                 font-size: 100%;
         }
         section {
                 padding-top: 70px;
+                padding-bottom: 70px;
         }
-        /* Intro */
-
         #intro-start {
                 padding: 70px;
         }
@@ -330,8 +365,11 @@ background-color: #FFFFFF;
                 line-height: 80px;
                 font-size: 1.85em;
         }
+        .tab-content {
+                padding-top: 70px;
+        }
         /*hero */
-
+        
         #hero-data {
                 min-height: 500px;
         }
