@@ -120,6 +120,20 @@ p {
         padding: 0;
         margin: 0;
 }
+.important{
+        color:#AB4642;
+        font-weight:400;
+        padding:1px;
+
+}
+
+.important a{
+        text-decoration:underline;
+}
+.important a:hover {
+        color:#fff;
+        font-weight: 400;
+}
 /* Intro */
 
 #intro {
@@ -378,7 +392,7 @@ p {
         color: #333;
         text-align: center;
         height: 100%;
-        padding: 20px;
+        padding: 120px;
 }
 #hack4k {
         height: 150px;
