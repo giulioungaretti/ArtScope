@@ -182,7 +182,7 @@ p {
         position: relative;
         padding-bottom: 56.25%;
         /* 16:9 */
-
+        
         padding-top: 25px;
         height: 0px;
 }
@@ -207,16 +207,16 @@ p {
 #info {
         background: -webkit-linear-gradient(#000, #383838);
         /* For Safari 5.1 to 6.0 */
-
+        
         background: -o-linear-gradient(#000, #383838);
         /* For Opera 11.1 to 12.0 */
-
+        
         background: -moz-linear-gradient(#000, #383838);
         /* For Firefox 3.6 to 15 */
-
+        
         background: linear-gradient(#000, #383838);
         /* Standard syntax */
-
+        
         color: #f5f5f5;
 }
 /*layers*/
@@ -224,16 +224,16 @@ p {
 #layers {
         background: -webkit-linear-gradient(#383838, #000);
         /* For Safari 5.1 to 6.0 */
-
+        
         background: -o-linear-gradient(#383838, #000);
         /* For Opera 11.1 to 12.0 */
-
+        
         background: -moz-linear-gradient(#383838, #000);
         /* For Firefox 3.6 to 15 */
-
+        
         background: linear-gradient(#383838, #000);
         /* Standard syntax */
-
+        
         color: #f5f5f5;
         padding-bottom: 0;
 }
@@ -245,12 +245,11 @@ p {
 #invisiblelayers {
         color: #000;
 }
-
 /*xray*/
 
 #xray {
-        background-color: #6fc2ef;
-        color: #000000;
+        background-color: #CACACA;
+        color: #333;
 }
 #hero-xray {
         min-height: 450px;
@@ -258,8 +257,9 @@ p {
         background-size: contain;
 }
 /*UV*/
+
 #UV {
-        background-color: #f99157;
+        background-color: #29B1F7;
         color: #f5f5f5;
 }
 #hero-uv {
@@ -269,12 +269,30 @@ p {
 }
 /*ir*/
 
-#IR {
-        background-color: #ffcc66;
-        color: #f5f5f5;
-}
 #hero-ir {
-        min-height: 700px;
+        min-height: 450px;
+        background: url('../img/ir.png') no-repeat center center;
+        background-size: contain;
+}
+/*interactive*/
+
+#interactive {
+        color: #ffffff;
+        padding: 0;
+}
+#fixed-container {
+        height: 550px;
+        background: url('../img/interactive.png') no-repeat center center;
+        background-size: cover;
+}
+/*mega hack*/
+
+#asd {
+        color: #fff;
+        padding-right: 20px;
+        padding-left: 20px;
+        background-color: #3E3B40;
+        opacity: 0.8;
 }
 /*data*/
 
@@ -384,11 +402,15 @@ p {
 
 @media all and (min-width: 767px) {
         /* Common */
-
+        
         html {
                 font-size: 100%;
         }
         section {
+                padding-top: 70px;
+                padding-bottom: 50px;
+        }
+        #pad {
                 padding-top: 70px;
                 padding-bottom: 50px;
         }
@@ -402,7 +424,7 @@ p {
                 font-size: 1.85em;
         }
         /*grid*/
-
+        
         #nav .grid {
                 min-width: 0;
                 padding: 0;
@@ -412,7 +434,7 @@ p {
                 max-width: 4000px;
         }
         /*hero */
-
+        
         #hero-data {
                 min-height: 700px;
         }
