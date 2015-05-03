@@ -120,18 +120,16 @@ p {
         padding: 0;
         margin: 0;
 }
-.important{
-        color:#AB4642;
-        font-weight:400;
-        padding:1px;
-
+.important {
+        color: #AB4642;
+        font-weight: 400;
+        padding: 1px;
 }
-
-.important a{
-        text-decoration:underline;
+.important a {
+        text-decoration: underline;
 }
 .important a:hover {
-        color:#fff;
+        color: #fff;
         font-weight: 400;
 }
 /* Intro */
@@ -196,7 +194,7 @@ p {
         position: relative;
         padding-bottom: 56.25%;
         /* 16:9 */
-        
+
         padding-top: 25px;
         height: 0px;
 }
@@ -221,16 +219,16 @@ p {
 #info {
         background: -webkit-linear-gradient(#000, #383838);
         /* For Safari 5.1 to 6.0 */
-        
+
         background: -o-linear-gradient(#000, #383838);
         /* For Opera 11.1 to 12.0 */
-        
+
         background: -moz-linear-gradient(#000, #383838);
         /* For Firefox 3.6 to 15 */
-        
+
         background: linear-gradient(#000, #383838);
         /* Standard syntax */
-        
+
         color: #f5f5f5;
 }
 /*layers*/
@@ -238,16 +236,16 @@ p {
 #layers {
         background: -webkit-linear-gradient(#383838, #000);
         /* For Safari 5.1 to 6.0 */
-        
+
         background: -o-linear-gradient(#383838, #000);
         /* For Opera 11.1 to 12.0 */
-        
+
         background: -moz-linear-gradient(#383838, #000);
         /* For Firefox 3.6 to 15 */
-        
+
         background: linear-gradient(#383838, #000);
         /* Standard syntax */
-        
+
         color: #f5f5f5;
         padding-bottom: 0;
 }
@@ -416,7 +414,7 @@ p {
 
 @media all and (min-width: 767px) {
         /* Common */
-        
+
         html {
                 font-size: 100%;
         }
@@ -438,7 +436,7 @@ p {
                 font-size: 1.85em;
         }
         /*grid*/
-        
+
         #nav .grid {
                 min-width: 0;
                 padding: 0;
@@ -448,7 +446,7 @@ p {
                 max-width: 4000px;
         }
         /*hero */
-        
+
         #hero-data {
                 min-height: 700px;
         }
@@ -465,6 +463,8 @@ p {
                 min-height: 700px;
         }
 }
+/*hi res desktops*/
+
 @media all and (min-width: 1467px) {
         #hero-data {
                 min-height: 1000px;
@@ -481,4 +481,19 @@ p {
         #hero-ir {
                 min-height: 1000px;
         }
+        #fixed-container {
+                min-height: 1000px;
+        }
+}
+
+
+/*ipad retina hacks   */
+@media all and
+(-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    /* Retina-specific stuff here */
+        #interactive{
+                background-color:#f4bf75;
+        }
+
 }
