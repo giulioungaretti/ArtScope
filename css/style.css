@@ -281,6 +281,9 @@ p {
 }
 /*ir*/
 
+#ir {
+        background-color: #f4bf75;
+}
 #hero-ir {
         min-height: 450px;
         background: url('../img/ir.png') no-repeat center center;
@@ -485,15 +488,28 @@ p {
                 min-height: 1000px;
         }
 }
-
-
 /*ipad retina hacks   */
-@media all and
-(-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
-    /* Retina-specific stuff here */
-        #ir{
-                background-color:#f4bf75;
-        }
 
+@media all and (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+        html {
+                font-size: 84%;
+        }
+        /* Retina-specific stuff here */
+
+        #hero-data {
+                min-height: 500px;
+        }
+        #hero-layers {
+                min-height: 500px;
+        }
+        #hero-xray {
+                min-height: 500px;
+        }
+        #hero-uv {
+                min-height: 500px;
+        }
+        #hero-ir {
+                min-height: 500px;
+        }
 }
