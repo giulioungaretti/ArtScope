@@ -107,6 +107,9 @@ p {
 .no-bottom-margin {
         margin-bottom: 0;
 }
+.small-bottom-margin {
+        margin-bottom: 0.3em;
+}
 .hero {
         margin-top: 30px;
 }
@@ -140,6 +143,15 @@ p {
         color: #fff;
         font-weight: 400;
 }
+.bottomdiv{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.inlinecenter{
+            position:relative;
+            text-align:center;
+}
 /* Intro */
 
 #intro {
@@ -153,6 +165,7 @@ p {
         position: relative;
         overflow: hidden;
         height: 80vh;
+        min-height: 400px
 }
 /* nav */
 
@@ -238,7 +251,19 @@ p {
         color: #f5f5f5;
 }
 /*layers*/
-
+blockquote.magazinequote
+{
+float:right;
+font-family:Georgia, Arial, Serif;
+font-size:1.25em;
+background:none;
+width:150px;
+border-top:#f5f5f5 3px solid;
+border-bottom:#f5f5f5 3px solid;
+margin:1em;
+padding:1em;
+color:#f5f5f5;
+}
 #layers {
         background: -webkit-linear-gradient(#383838, #000);
         /* For Safari 5.1 to 6.0 */
@@ -298,22 +323,31 @@ p {
 /*interactive*/
 
 #interactive {
+        background-color:#3E3B40;
         color: #ffffff;
         padding: 0;
 }
-#fixed-container {
-        height: 550px;
-        background: url('../img/interactive.png') no-repeat center center;
-        background-size: cover;
+#fixed-container1 {
+        height: 400px;
+        background: url('../img/interactive.png') no-repeat center top;
+        background-size: contain;
+}
+#fixed-container2 {
+        height: 432px;
+        background: url('../img/stats.png') no-repeat center bottom;
+        background-size: contain;
+}
+#interactive a { 
+        color: #A1b56c;
+        font-weight:400;
 }
 /*mega hack*/
-
-#asd {
+.asd {
         color: #fff;
         padding-right: 20px;
         padding-left: 20px;
         background-color: #3E3B40;
-        opacity: 0.8;
+        opacity: 0.9;
 }
 /*data*/
 
@@ -424,7 +458,6 @@ p {
 
 @media all and (min-width: 767px) {
         /* Common */
-        
         html {
                 font-size: 100%;
         }
@@ -489,6 +522,22 @@ p {
         #hero-layers {
                 background: url('../img/all.png') no-repeat left center;
                 background-size: contain;
+        }
+        #hero-data {
+                background: url('../img/data.png') no-repeat center center;
+                background-size: contain;
+        }
+        #fixed-container1 {
+                /*height: 500px;*/
+        height: 80vh;
+                background: url('../img/interactive.png') no-repeat center top;
+                background-size: cover;
+        }
+        #fixed-container2 {
+                /*height: 500px;*/
+                height: 80vh;
+                background: url('../img/stats.png') no-repeat center bottom;
+                background-size: cover;
         }
 }
 /*hi res desktops*/
