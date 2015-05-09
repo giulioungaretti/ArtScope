@@ -334,7 +334,7 @@ color:#f5f5f5;
 }
 #fixed-container2 {
         height: 432px;
-        background: url('../img/stats.png') no-repeat center bottom;
+        background: url('../img/stats.jpg') no-repeat center bottom;
         background-size: contain;
 }
 #interactive a { 
@@ -536,7 +536,7 @@ color:#f5f5f5;
         #fixed-container2 {
                 /*height: 500px;*/
                 height: 80vh;
-                background: url('../img/stats.png') no-repeat center bottom;
+                background: url('../img/stats.jpg') no-repeat center bottom;
                 background-size: cover;
         }
 }
