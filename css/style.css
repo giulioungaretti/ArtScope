@@ -329,7 +329,7 @@ color:#f5f5f5;
 }
 #fixed-container1 {
         height: 400px;
-        background: url('../img/interactive.png') no-repeat center top;
+        background: url('../img/interactive.jpg') no-repeat center top;
         background-size: contain;
 }
 #fixed-container2 {
@@ -530,7 +530,7 @@ color:#f5f5f5;
         #fixed-container1 {
                 /*height: 500px;*/
         height: 80vh;
-                background: url('../img/interactive.png') no-repeat center top;
+                background: url('../img/interactive.jpg') no-repeat center top;
                 background-size: cover;
         }
         #fixed-container2 {
