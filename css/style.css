@@ -509,7 +509,7 @@ color:#f5f5f5;
                 min-height: 700px;
         }
         #invisiblelayers {
-                text-align: right;
+                /*text-align: right;*/
                 margin-left: auto;
                 margin-right: auto;
                 max-width: 50%;
